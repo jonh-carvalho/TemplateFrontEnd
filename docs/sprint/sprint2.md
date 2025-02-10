@@ -2,7 +2,7 @@
 id: sprint2
 title: Sprint 2
 ---
-# Sprint 2 (05/02/24 à 12/04/2024)
+# Sprint 2 (xx/xx/2x à xx/xx/202x)
 
 ## Planejamento de Sprint
 

@@ -2,7 +2,7 @@
 id: sprint1
 title: Sprint 1
 ---
-# Sprint 1 (05/02/24 à 12/04/2024)
+# Sprint 1 (xx/xx/2x à xx/xx/202x)
 
 ## Planejamento de Sprint
 
