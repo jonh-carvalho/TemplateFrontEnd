@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page com Intro.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/introjs.min.css">
+    <style>
+        /* Estilos adicionais podem ser adicionados aqui */
+        /* Estilos de exemplo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .hero {
+            background-image: url('https://via.placeholder.com/1500x500');
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 0;
+        }
+        .feature {
+            flex-basis: 30%;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Header</h1>
+</header>
+
+<div class="hero">
+    <h1>Hero Section</h1>
+    <p>Descrição do Hero Section.</p>
+</div>
+
+<div class="features">
+    <div class="feature">
+        <h2>Feature 1</h2>
+        <p>Descrição da Feature 1.</p>
+    </div>
+    <div class="feature">
+        <h2>Feature 2</h2>
+        <p>Descrição da Feature 2.</p>
+    </div>
+    <div class="feature">
+        <h2>Feature 3</h2>
+        <p>Descrição da Feature 3.</p>
+    </div>
+</div>
+
+<footer>
+    <h2>Footer</h2>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/intro.min.js"></script>
+<script>
+    // Script para configurar a demonstração com o Intro.js
+    document.addEventListener("DOMContentLoaded", function() {
+        introJs().setOptions({
+            steps: [
+                {
+                    intro: "Bem-vindo à nossa Landing Page!"
+                },
+                {
+                    element: document.querySelector('header'),
+                    intro: "Este é o cabeçalho da página."
+                },
+                {
+                    element: document.querySelector('.hero'),
+                    intro: "Esta é a seção do herói. Aqui podemos destacar as principais características do produto."
+                },
+                {
+                    element: document.querySelector('.features'),
+                    intro: "Estas são as características principais do nosso produto."
+                },
+                {
+                    element: document.querySelector('footer'),
+                    intro: "Este é o rodapé da página."
+                }
+            ]
+        }).start();
+    });
+</script>
+
+</body>
+</html>

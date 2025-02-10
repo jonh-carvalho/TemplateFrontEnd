@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            color: #6df161;
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 15px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            grid-template-rows: 50px 1fr 50px;
+            grid-template-areas:
+                'aside header'
+                'aside main'
+                'aside footer';
+            height: 100vh;
+        }
+        .header {
+            grid-area: header;
+            background-color: #6df161;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: darkblue;
+            padding: 0 15px;
+        }
+        .aside {
+            grid-area: aside;
+            background-color: #0047AB;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 240px;
+            position: relative;
+        }
+        .main {
+            grid-area: main;
+            background-color: white;
+            padding: 20px;
+        }
+        .footer {
+            grid-area: footer;
+            background-color: whitesmoke;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: darkblue;
+        }
+        .aside_list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .aside_list-item {
+            padding: 20px;
+            color: #ddd;
+            cursor: pointer;
+        }
+        .aside_list-item:hover {
+            background-color: royalblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <aside class="aside">
+            <img src="logo-icurti.jpg" alt="Logo do iCurti" width="150" height="60">
+            <ul class="aside_list">
+                <li class="aside_list-item" data-section="my-lists">Minhas Listas</li>
+                <li class="aside_list-item" data-section="create-list"><a href="criar_lista.html">Criar Lista</a></li>
+                <li class="aside_list-item" data-section="logout"><a href="index.html">Sair</a></li>
+            </ul>
+        </aside>
+        <main class="main">
+            <div id="content"></div>
+        </main>
+        <footer class="footer">
+            <div>&copy; 2024 Dashboard</div>
+        </footer>
+    </div>
+    <script>
+        const contentDiv = document.getElementById('content');
+        const menuItems = document.querySelectorAll('.aside_list-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const section = item.getAttribute('data-section');
+                if (section === 'my-lists') {
+                    const savedList = JSON.parse(localStorage.getItem('myList') || '[]');
+                    contentDiv.innerHTML = '<h2>Minhas Listas</h2><ul>' + savedList.map(item => `<li>${item}</li>`).join('') + '</ul>';
+                } else if (section === 'logout') {
+                    contentDiv.innerHTML = '<h2>Você saiu...</h2>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criar Lista</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+    <header>
+        <img src="logo-icurti-main.svg" alt="Logo do iCurti" width="150" height="60">
+        <nav>
+            <a href="index.html">Página Inicial</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="create-list">
+            <form id="list-form">
+                <input type="text" id="list-name" placeholder="Nome da Lista">
+                <input type="text" id="list-item" placeholder="Novo item">
+                <input type="text" id="list-email" placeholder="Email">
+                <button type="submit">Adicionar à Lista</button>
+            </form>
+            <ul id="list"></ul>
+        </section>
+        <button id="save-list">Salvar Lista</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Criar Lista</p>
+    </footer>
+
+    <script>
+        const listForm = document.getElementById('list-form');
+        const listNameInput = document.getElementById('list-name');
+        const listEmailInput = document.getElementById('list-email');
+        const listItemInput = document.getElementById('list-item');
+        const list = document.getElementById('list');
+        const saveListButton = document.getElementById('save-list');
+
+        listForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const listName = listNameInput.value;
+            if (listName) {
+                const li = document.createElement('li');
+                li.textContent = listName;
+                list.appendChild(li);
+                listNameInput.value = '';
+            }
+            const listEmail = listEmailInput.value;
+            if (listEmail) {
+                const li = document.createElement('li');
+                li.textContent = listEmail;
+                list.appendChild(li);
+                listEmailInput.value = '';
+            }
+            const listItem = listItemInput.value;
+            if (listItem) {
+                const li = document.createElement('li');
+                li.textContent = listItem;
+                list.appendChild(li);
+                listItemInput.value = '';
+            }
+        });
+
+        saveListButton.addEventListener('click', function() {
+            const items = [];
+            list.querySelectorAll('li').forEach(li => items.push(li.textContent));
+            localStorage.setItem('myList', JSON.stringify(items));
+            alert('Lista salva!');
+        });
+    </script>
+</body>
+</html>
